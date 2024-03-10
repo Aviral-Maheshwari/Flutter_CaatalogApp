@@ -1,64 +1,69 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white,
-      child: Column(
-        children: [
-          Image.asset(
-            "assets/images/login_image.png",
-            fit: BoxFit.cover,
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Text(
-            "Welcome",
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 16.0, horizontal: 23.0),
-            child: Column(
-              children: [
-                TextField(
-                  decoration: InputDecoration(
-                    hintText: "Enter Username",
-                    labelText: "USERNAME",
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                "assets/images/login_image.png",
+                fit: BoxFit.cover,
+              ),
+              Text(
+                "Welcome",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 28,
+                    color: Colors.blue),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Username',
+                  prefixIcon: Icon(Icons.person),
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 20),
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  prefixIcon: Icon(Icons.lock),
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "/home");
+                },
+                child: Text('Login'),
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
                   ),
                 ),
-                TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: "Enter Password",
-                    labelText: "PASSWORD",
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-          SizedBox(
-            height: 20,
-          ),
-          ElevatedButton(
-            child: Text("Login"),
-            style: TextButton.styleFrom(),
-            onPressed: () {
-              print("HI WELCOME");
-            },
-          ),
-        ],
+        ),
       ),
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: LoginPage(),
+  ));
 }
