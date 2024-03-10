@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  String name = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,14 +22,14 @@ class LoginPage extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
               Text(
-                "Welcome",
+                "Welcome $name",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 28,
                     color: Colors.blue),
               ),
               SizedBox(
-                height: 20,
+                height: 15,
               ),
               TextField(
                 decoration: InputDecoration(
@@ -31,8 +37,12 @@ class LoginPage extends StatelessWidget {
                   prefixIcon: Icon(Icons.person),
                   border: OutlineInputBorder(),
                 ),
+                onChanged: (value) {
+                  name = value;
+                  setState(() {});
+                },
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 15),
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
@@ -41,14 +51,14 @@ class LoginPage extends StatelessWidget {
                   border: OutlineInputBorder(),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 13),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, "/home");
                 },
                 child: Text('Login'),
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
